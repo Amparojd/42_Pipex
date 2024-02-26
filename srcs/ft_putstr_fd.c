@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krios-fu <krios-fu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ampjimen <ampjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/25 17:56:01 by krios-fu          #+#    #+#             */
-/*   Updated: 2021/06/10 15:20:42 by krios-fu         ###   ########.fr       */
+/*   Created: 2024/02/26 19:54:00 by ampjimen          #+#    #+#             */
+/*   Updated: 2024/02/26 19:54:00 by ampjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "../include/pipex.h"
 
