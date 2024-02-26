@@ -10,21 +10,23 @@ OBJ=$(OBJ1:.m=.o)
 
 $(NAME):	$(OBJ)
 	@clear
-	@echo "\n\033[33m"****************\\nCompiling... Patience is a virtue!\\n🛠️⏳😊\\n****************\\n"\033[0m\n"
+	@echo "\n\033[33m"🛠️⏳ Compiling... Patience is a virtue! 😊⏳🛠️"\033[0m"
+	@sleep 3
+
 # @make -sC ./libft/
 # @make bonus -sC ./libft/
 # @cp libft/libft.a .
 	@ar -rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@clear
-	@echo "\n\033[32m"****************\\nCongratulations! Everything compiles!\\n🎉🚀😄\\n****************\\n"\033[0m\n"
+	@echo "\n\033[32m"✨🎉 Compilation successful! All set to go! 🚀✨"\033[0m\n"
 	@$(FLAGS) $(SRC) -o pipex
 
 all: $(NAME)
 
 clean:
 	@clear
-	@echo "\n\033[31m"--------------\\n¡Oops! Archivos eliminados...\\n¡Pero aún estamos bien!\\n------------------\\n"\033[0m\n"
+	@echo "\n\033[34m"🧹🧽 Cleaning up... Bye-bye, files! 📂👋"\033[0m\n"
 	@rm -f $(OBJ)
 
 fclean: clean
