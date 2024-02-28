@@ -1,0 +1,10 @@
+Makefile
+README.md
+include
+infile.txt
+outfile.txt
+pipex
+pipex.a
+pipex.c
+pipex.o
+srcs

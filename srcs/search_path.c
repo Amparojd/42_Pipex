@@ -55,10 +55,3 @@ void	get_path(char *cmd, char *envp[], char **f_path)
 	free_matrix(paths);
 }
 
-char	**split_cmd_arg(char *argv)
-{
-	char	**cmd_arg;
-
-	cmd_arg = ft_split(argv, ' ');
-	return (cmd_arg);
-}

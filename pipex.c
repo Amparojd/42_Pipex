@@ -12,7 +12,7 @@
 
 #include "./include/pipex.h"
 
-static void	child_process_start (int *fd, char **argv, char **envp)
+static void	child_process_start(int *fd, char **argv, char **envp)
 {
 	int		fd_infile;
 	char	*path;
@@ -25,7 +25,7 @@ static void	child_process_start (int *fd, char **argv, char **envp)
 	close(fd_infile);
 	dup2(fd[FD_WRITE_END], STDOUT_FILENO);
 	close(fd[FD_WRITE_END]);
-	arg_cmd = split_cmd_arg(argv[2]);
+	arg_cmd = ft_split(argv[2], ' ');
 	get_path(arg_cmd[0], envp, &path);
 	if (execve(path, arg_cmd, envp) == -1)
 	{
@@ -49,7 +49,7 @@ static	void	child_process_end(int *fd, char **argv, char **envp)
 	dup2(fd[FD_READ_END], STDIN_FILENO);
 	close(fd[FD_READ_END]);
 	dup2(fd_outfile, STDOUT_FILENO);
-	arg_cmd = split_cmd_arg(argv[3]);
+	arg_cmd = ft_split(argv[2], ' ');
 	get_path(arg_cmd[0], envp, &path);
 	if (execve(path, arg_cmd, envp) == -1)
 	{
@@ -60,6 +60,11 @@ static	void	child_process_end(int *fd, char **argv, char **envp)
 		exit(0);
 	}
 }
+
+/*void	leaks(void)
+{
+	system("leaks -q pipex");
+}*/
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -72,20 +77,25 @@ int	main(int argc, char *argv[], char *envp[])
 	if (pid == -1)
 		perror("Error");
 	if (pid == 0)
+	{
+		printf("aquí entra el proceso hijo 1º DEL IF, con su PID %d\n", getpid());
 		child_process_start(fd, argv, envp);
+	}
 	else
 	{
 		pid = fork();
 		if (pid == -1)
 			perror("Error");
 		if (pid == 0)
-			child_process_end(fd, argv, envp);
-		else
 		{
-			close(fd[FD_READ_END]);
-			close(fd[FD_WRITE_END]);
+			printf("Aquí entra el proceso del segundo  hijo del ELSE, con su PID %d\n", getpid());
+			child_process_end(fd, argv, envp);
 		}
+		printf("este sería e proceso padre pid %d\n", getpid());
+		close(fd[FD_READ_END]);
+		close(fd[FD_WRITE_END]);
 	}
 	waitpid(pid, NULL, 0);
+	//atexit(leaks);
 	return (0);
 }
