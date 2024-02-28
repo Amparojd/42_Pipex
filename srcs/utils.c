@@ -26,7 +26,8 @@ void	check_argv(int argc)
 {
 	if (argc != 5)
 	{
-		printf("Arg: ./pipex infile comand1 comand2 outfile\n");
+		printf("Arguments: The number of arguments is invalid\n");
+		printf("Try: ./pipex infile cmd1 cmd2 outfile\n");
 		exit(0);
 	}
 }
