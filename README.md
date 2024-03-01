@@ -9,7 +9,6 @@
     <div class="container">
         <h1>Pipex</h1>
         <p>Bienvenido al proyecto Pipex. Este es un proyecto increíble que hace...</p>
-        ![](https://github.com/Amparojd/42_Pipex/blob/master/gifMario.gif)
         <h2>Índice</h2>
         <ul>
             <li><a href="#seccion-1">Sección 1</a></li>
