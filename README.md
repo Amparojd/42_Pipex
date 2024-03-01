@@ -7,7 +7,8 @@
 </head>
 <body>
     <div class="container">
-         <img src=./pipex.gif width="700"/>
+        <p align = "center">
+         <img src=./pipex.gif width="700"/></p>
         <p align = "center">Proyecto de 42 Madrid</p>
         <h2>Índice</h2>
         <ul>
