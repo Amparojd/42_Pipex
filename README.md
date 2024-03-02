@@ -36,7 +36,8 @@ El objetivo principal de Pipex es implementar un programa en lenguaje C que repl
         <p>Ejemplo: Con <code>dup()</code>: <code>int new_dup = dup(descriptor_original);</code>. Con <code>dup2()</code>: <code>dup2(descriptor_original, nuevo_descriptor)</code></p>
         <p><h4><code>execve():</code></h4> Con ella ejecutamos un programa, especificando la ruta del programa, sus argumentos y varias de entorno <code>envp[]</code>. Reemplaza el proceso actual con el nuevo programa ejecutable especificado</p>
         <p>Ejemplo: <code>if (execve(path, arg_cmd, envp) == -1)</code>. Este es un extracto de mi código, en él tenemos la ruta (path), los argumentos (arg_cmd), y la variable de entorno. El <code>if</code> verifica si existe algún error<code>execve()</code> (== -1)</p>
-        <p><h4><code>fork():</code></h4>Este es de los puntos más importantes del proyecto Pipex, la creación de hijos.</p>
+        <p><h4><code>fork():</code></h4>Este es de los puntos más importantes del proyecto Pipex, la creación de hijos. Con esta función creamos un duplicado del proceso existente (proceso padre) al que llamaremos proceso hijo. Ambos procesos se ejecutan de forma simultánea. Tienen PID (process id) distintos</p>
+        <p>Ejemplo: <code>t_pid pid = fork();</code>
         <p><code>pipe()</code>:</p>
         <p><code>unlink()</code>:</p>
         <p><code>wait()</code>:</p>
