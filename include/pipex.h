@@ -26,13 +26,13 @@
 # define	FD_WRITE_END	1
 # define	FD_READ_END		0
 
-//error message macros
+//error msg
 # define ERROR_ARG "Argc Error: Try ./pipex infile cmd1 cmd2 outfile\n"
 # define ERROR_CMD "Error: Command not found\n"
 # define ERROR_EXE "Execve Error\n"
 # define ERROR_FRK "Fork Error\n"
 # define ERROR_INF "Infile doesn't exist\n"
-# define ERROR_OUT "Outfile Error\n"
+//# define ERROR_OUT "Outfile Error\n"
 # define ERROR_PIP "Pipe Error\n"
 
 /* Search path*/

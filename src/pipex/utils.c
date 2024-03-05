@@ -25,9 +25,7 @@ void	free_matrix(char **matrix)
 void	check_argv(int argc)
 {
 	if (argc != 5)
-	{
 		exit_error(ERROR_ARG);
-	}
 }
 
 void	check_fd(int fd, char *file)
