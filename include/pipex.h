@@ -26,6 +26,15 @@
 # define	FD_WRITE_END	1
 # define	FD_READ_END		0
 
+//error message macros
+# define ERROR_ARG "Argc Error: Try ./pipex infile cmd1 cmd2 outfile\n"
+# define ERROR_CMD "Error: Command not found\n"
+# define ERROR_EXE "Execve Error\n"
+# define ERROR_FRK "Fork Error\n"
+# define ERROR_INF "Infile doesn't exist\n"
+# define ERROR_OUT "Outfile Error\n"
+# define ERROR_PIP "Pipe Error\n"
+
 /* Search path*/
 
 void	get_path(char *cmd, char *envp[], char **f_path);
@@ -35,5 +44,6 @@ void	get_path(char *cmd, char *envp[], char **f_path);
 void	free_matrix(char **matrix);
 void	check_argv(int argc);
 void	check_fd(int fd, char *file);
+void	exit_error(char *err);
 
 #endif

@@ -6,12 +6,12 @@
 #    By: ampjimen <ampjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 19:46:44 by marvin            #+#    #+#              #
-#    Updated: 2024/02/29 21:29:05 by ampjimen         ###   ########.fr        #
+#    Updated: 2024/03/04 20:09:56 by ampjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME= pipex
-SRC_DIR = ./src
+SRC_DIR = ./src/pipex
 SRC= search_path.c utils.c pipex.c
 
 OBJS = $(addprefix $(SRC_DIR)/,  $(SRC:.c=.o))

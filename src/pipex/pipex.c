@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../../include/pipex.h"
 
 static void	child_process_start(int *fd, char **argv, char **envp)
 {
@@ -29,11 +29,9 @@ static void	child_process_start(int *fd, char **argv, char **envp)
 	get_path(arg_cmd[0], envp, &path);
 	if (execve(path, arg_cmd, envp) == -1)
 	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(arg_cmd[0], 2);
 		free_matrix(arg_cmd);
 		free(path);
-		exit(0);
+		exit_error(ERROR_EXE);
 	}
 }
 
@@ -49,15 +47,13 @@ static	void	child_process_end(int *fd, char **argv, char **envp)
 	dup2(fd[FD_READ_END], STDIN_FILENO);
 	close(fd[FD_READ_END]);
 	dup2(fd_outfile, STDOUT_FILENO);
-	arg_cmd = ft_split(argv[2], ' ');
+	arg_cmd = ft_split(argv[3], ' ');
 	get_path(arg_cmd[0], envp, &path);
 	if (execve(path, arg_cmd, envp) == -1)
 	{
-		ft_putstr_fd("pipex: command not found: ", 2);
-		ft_putendl_fd(arg_cmd[0], 2);
 		free_matrix(arg_cmd);
 		free(path);
-		exit(0);
+		exit_error(ERROR_EXE);
 	}
 }
 
@@ -73,25 +69,20 @@ int	main(int argc, char *argv[], char *envp[])
 
 	check_argv(argc);
 	pipe(fd);
+	if(pipe(fd) < 0)
+		exit_error(ERROR_PIP);
 	pid = fork();
 	if (pid == -1)
-		perror("Error");
+		exit_error(ERROR_FRK);
 	if (pid == 0)
-	{
-		printf("aquí entra el proceso hijo 1º DEL IF, con su PID %d\n", getpid());
 		child_process_start(fd, argv, envp);
-	}
 	else
 	{
 		pid = fork();
 		if (pid == -1)
-			perror("Error");
+			exit_error(ERROR_FRK);
 		if (pid == 0)
-		{
-			printf("Aquí entra el proceso del segundo  hijo del ELSE, con su PID %d\n", getpid());
 			child_process_end(fd, argv, envp);
-		}
-		printf("este sería e proceso padre pid %d\n", getpid());
 		close(fd[FD_READ_END]);
 		close(fd[FD_WRITE_END]);
 	}

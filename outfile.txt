@@ -1,9 +1,0 @@
-total 36
--rwxrwxrwx 1 ampjimen ampjimen  1731 Feb 29 21:29 Makefile
--rwxrwxrwx 1 ampjimen ampjimen  8820 Feb 28 21:56 amande_examples.txt
-drwxrwxrwx 1 ampjimen ampjimen  4096 Feb 26 22:00 include
--rwxrwxrwx 1 ampjimen ampjimen     0 Feb 28 21:56 infile.txt
-drwxrwxrwx 1 ampjimen ampjimen  4096 Feb 29 21:33 libft
--rwxrwxrwx 1 ampjimen ampjimen     0 Feb 29 21:34 outfile.txt
--rwxrwxrwx 1 ampjimen ampjimen 17616 Feb 29 21:33 pipex
-drwxrwxrwx 1 ampjimen ampjimen  4096 Feb 29 21:32 src

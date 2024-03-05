@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../../include/pipex.h"
 
 void	free_matrix(char **matrix)
 {
@@ -26,9 +26,7 @@ void	check_argv(int argc)
 {
 	if (argc != 5)
 	{
-		printf("Arguments: The number of arguments is not valid\n");
-		printf("Try: ./pipex infile cmd1 cmd2 outfile\n");
-		exit(0);
+		exit_error(ERROR_ARG);
 	}
 }
 
@@ -40,4 +38,10 @@ void	check_fd(int fd, char *file)
 		ft_putendl_fd(file, 2);
 		exit(0);
 	}
+}
+
+void	exit_error(char *err)
+{
+	perror(err);
+	exit(EXIT_FAILURE);
 }
