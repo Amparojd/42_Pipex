@@ -54,4 +54,3 @@ void	get_path(char *cmd, char *envp[], char **f_path)
 	}
 	free_matrix(paths);
 }
-

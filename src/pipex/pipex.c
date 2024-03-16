@@ -47,8 +47,7 @@ static	void	end_child_process(int *fd, char **argv, char **envp)
 	char	**arg_cmd;
 
 	close(fd[FD_WRITE_END]);
-	fd_outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC | O_APPEND,
-			S_IRWXU);
+	fd_outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	dup2(fd[FD_READ_END], STDIN_FILENO);
 	close(fd[FD_READ_END]);
 	dup2(fd_outfile, STDOUT_FILENO);
@@ -60,10 +59,10 @@ static	void	end_child_process(int *fd, char **argv, char **envp)
 		execute(path, arg_cmd, envp);
 }
 
-/*void	leaks(void)
+void	leaks(void)
 {
 	system("leaks -q pipex");
-}	atexit(leaks);*/
+}
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -72,7 +71,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	check_argv(argc);
 	pipe(fd);
-	if (pipe(fd) < 0)
+	if(pipe(fd) < 0)
 		exit_error(ERROR_PIP);
 	pid = fork();
 	if (pid == -1)
