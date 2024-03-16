@@ -6,7 +6,7 @@
 #    By: ampjimen <ampjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/29 19:46:44 by marvin            #+#    #+#              #
-#    Updated: 2024/03/04 20:09:56 by ampjimen         ###   ########.fr        #
+#    Updated: 2024/03/16 12:27:17 by ampjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ all: $(NAME)
 $(NAME):	$(OBJS)
 	@clear
 	@echo "\n\033[33m"🛠️⏳ Compiling... Patience is a virtue! 😊⏳🛠️"\033[0m"
-	@sleep 3
+	@sleep 1
 	@make -C $(LIBFT_DIR)
 	@gcc $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@clear

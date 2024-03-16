@@ -60,10 +60,10 @@ static	void	end_child_process(int *fd, char **argv, char **envp)
 		execute(path, arg_cmd, envp);
 }
 
-void	leaks(void)
+/*void	leaks(void)
 {
 	system("leaks -q pipex");
-}
+}	atexit(leaks);*/
 
 int	main(int argc, char *argv[], char *envp[])
 {
@@ -72,7 +72,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	check_argv(argc);
 	pipe(fd);
-	if(pipe(fd) < 0)
+	if (pipe(fd) < 0)
 		exit_error(ERROR_PIP);
 	pid = fork();
 	if (pid == -1)
@@ -90,6 +90,5 @@ int	main(int argc, char *argv[], char *envp[])
 		close(fd[FD_WRITE_END]);
 	}
 	waitpid(pid, NULL, 0);
-	atexit(leaks);
 	return (0);
 }
