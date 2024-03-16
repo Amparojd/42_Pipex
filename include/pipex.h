@@ -32,7 +32,7 @@
 # define ERROR_EXE "Execve Error\n"
 # define ERROR_FRK "Fork Error\n"
 # define ERROR_INF "Infile doesn't exist\n"
-//# define ERROR_OUT "Outfile Error\n"
+# define ERROR_OUT "Outfile Error\n"
 # define ERROR_PIP "Pipe Error\n"
 
 /* Search path*/
