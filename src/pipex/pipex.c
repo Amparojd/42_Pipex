@@ -47,12 +47,8 @@ static	void	end_child_process(int *fd, char **argv, char **envp)
 	char	**arg_cmd;
 
 	close(fd[FD_WRITE_END]);
-	// if (access(argv[4], R_OK | W_OK) != 0)
-	// 	exit_error(ERROR_EXE);
 	fd_outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC | O_APPEND,
 			S_IRWXU);
-	// if (fd_outfile == -1)
-	// 	exit_error(ERROR_EXE);
 	dup2(fd[FD_READ_END], STDIN_FILENO);
 	close(fd[FD_READ_END]);
 	dup2(fd_outfile, STDOUT_FILENO);
