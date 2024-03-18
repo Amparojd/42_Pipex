@@ -28,9 +28,65 @@ El objetivo principal de Pipex es implementar un programa en lenguaje C que repl
         <p>Una vez dentro del directorio clonado, escribe "make" en terminal. Con esto se compilarán todos los archivos y se creará un ejecutable llamado "pipex".</p>
         <br>
         <h2 id="tester">Pruebas</h2>
-        <p>Esto debe mostrar el nombre del host de la máquina en la que se está ejecutando el comando.</p>
+        <p>*Esto debe mostrar el nombre del host de la máquina en la que se está ejecutando el comando.</p>
+        <p>Pipex:</p>
         <pre><code>./pipex infile.txt "cat" "hostname" "outfile.txt"</code></pre>
+        <p>Original:</p>
         <pre><code>< infile.txt cat | hostname</code></pre>
+        <br>
+        <p>*cuenta el número de palabras en esas líneas que contienen "a1" en el archivo "infile.txt"</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep a1" "wc -w" outfile.txt</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt grep a1 | wc -w</code></pre>
+        <br>
+        <p>*Cuenta el número de líneas de la salida generada por el comando "ls -l" en el directorio actual</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "ls -l" "wc -l" outfile.txt</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt ls -l | wc -l </code></pre>
+         <br>
+        <p>*Mostrará en la salida estándar el resultado de ejecutar "ls -l" en el directorio actual</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "ls -l" "cat" outfile.txt</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt ls -l | cat </code></pre>
+        <br>
+        <p>*Busca líneas que contienen la palabra "hola" en el archivo "infile.txt" y luego muestra estas líneas utilizando el comando "/bin/cat"</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep hola" "/bin/cat" outfile.txt</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt grep hola | /bin/cat</code></pre>
+        <br>
+        <p>*Este comando busca las primeras dos líneas que contienen la palabra "hola" en el archivo "infile.txt"</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep hola" "head -2" "outfile.txt"</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt grep hola | head -2</code></pre>
+         <br>
+        <p>*busca líneas que contienen la palabra "Now" en el archivo "infile.txt" y luego las muestra</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep hola" "cat" "outfile.txt"</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt grep hola | cat</code></pre>
+         <br>
+        <p>*buscará líneas que contengan la palabra "hola" en el archivo "infile.txt" y luego ejecutará el resultado utilizando el comando "cat". El "$(which cat)" es una forma de asegurarse de que se use el comando "cat" del sistema, incluso si su ubicación no está en la ruta predeterminada</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep hola" "$which cat" "outfile.txt"</code></pre>
+        <p>Original:</p>
+        <pre><code>< infile.txt grep hola | $(which cat)</code></pre>
+        <p>* crea un script awk para contar las ocurrencias de un patrón específico en un archivo, y luego lo utiliza para contar las ocurrencias de "hola" en el archivo infile.txt.</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex "infile.txt" "grep hola" "awk -f script.awk" "outfile.txt"</code></pre>
+        <p>Original:</p>
+        <pre><code>+++ CREATE in repo a file script.awk with inside: {count++} END {printf "%s", count}</code></pre>
+        <pre><code>< infile.txt grep Hello | awk '{count++} END {print count}'</code></pre>
+         <p>*Este comando no funcionará correctamente como se espera.</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex "/dev/random" "grep hola" "cat" outfile.txt</code></pre>
+        <p>Original:</p>
+        <pre><code>< /dev/random grep hola | cat > outfile.txt</code></pre>
+        
 </div>
 </body>
 </html>
