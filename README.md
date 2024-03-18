@@ -86,6 +86,20 @@ El objetivo principal de Pipex es implementar un programa en lenguaje C que repl
         <pre><code>./pipex "/dev/random" "grep hola" "cat" outfile.txt</code></pre>
         <p>Original:</p>
         <pre><code>< /dev/random grep hola | cat > outfile.txt</code></pre>
+        <br><br>
+        <p>Comandos que no deberían funcionar</p>
+         <p>Faltan argumentos, deben ser 5 "./pipex infile cmd1 cmd2 outfile</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "grep a1" "wc -w"</code></pre>
+         <p>Infile SÍ debe existir</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex incorrectfile "grep a1" "wc -w" outfile.txt</code></pre>
+          <p>Si los comandos no son válidos no funcionará</p>
+        <p>Pipex:</p>
+        <pre><code>./pipex infile.txt "nonexistant" "nonexistant" outfile.txt</code></pre>
+        
+        
+        
         
 </div>
 </body>
